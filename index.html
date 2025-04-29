@@ -18,6 +18,50 @@
         <button class="btn-login">→</button>
       </form>
     </nav>
+    <main class="app">
+      <div class="top">
+        <div class="top-left">
+          <p class="current-balance-label">Current balance</p>
+          <p class="date"></p>
+        </div>
+        <div class="top-right">
+          <span class="current-balance-number">0</span><span> €</span>
+        </div>
+      </div>
+      <div class="middle">
+        <div class="box-movements"></div>
+        <div class="middle-right">
+          <div class="box-transfer-money">
+            <h2>Transfer money</h2>
+            <form action="">
+              <input type="text" id="transfer-to" />
+              <label for="transfer-to">Transfer to</label>
+              <input type="password" id="transfer-amount" />
+              <label for="transfer-amount">Amount</label>
+              <button class="btn-transfer-amount">→</button>
+            </form>
+          </div>
+          <div class="box-request-loan">
+            <h2>Request Loan</h2>
+            <form action="">
+              <input type="text" id="request-loan-amount" />
+              <label for="request-loan-amount">Amount</label>
+              <button class="btn-request-loan">→</button>
+            </form>
+          </div>
+          <div class="box-close-account">
+            <h2>Close account</h2>
+            <form action="">
+              <input type="text" id="confirm-close-user" />
+              <label for="confirm-close-user">Confirm user</label>
+              <input type="password" id="confirm-close-pin" />
+              <label for="confirm-close-pin">confirm PIN</label>
+              <button class="btn-transfer-amount">→</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
