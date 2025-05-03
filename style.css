@@ -24,7 +24,7 @@ body {
   position: relative;
 }
 
-.theMain {
+.forBackground {
   /* opacity: 0.5; */
   margin: 0;
   padding: 0;
@@ -33,7 +33,7 @@ body {
   padding: 2rem;
   background-image: url(/images/Back\ copy.jpg);
   background-size: cover;
-  filter: opacity(0.2);
+  filter: opacity(1);
   z-index: 1;
   position: absolute;
 }
@@ -52,20 +52,23 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem;
+  padding: 5rem 5rem;
 }
 
 .welcome {
   font-size: 1.9rem;
   font-weight: 500;
+  align-self: flex-start;
 }
 
 .logo {
-  height: 14.25rem;
+  height: 34.25rem;
+  position: relative;
 }
 
 .login {
   display: flex;
+  align-self: flex-start;
 }
 
 .login__input {
@@ -121,9 +124,13 @@ nav {
 
   /* NOTE This creates the fade in/out anumation */
   opacity: 100;
+  /* display: none; */
   transition: all 1s;
 }
 
+.hidden {
+  display: none;
+}
 .balance {
   grid-column: 1 / span 2;
   display: flex;

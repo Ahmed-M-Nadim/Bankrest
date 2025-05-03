@@ -49,10 +49,14 @@ const accounts = [account1, account2, account3, account4];
 //////////////////////////////////////// //////////////////////////////////////// /////////////////////////////////////////
 ////////////////////////////////////////CREATE VARIABLE////////////////////////////////////////
 
-//====== NAV variables ======//
 const body = document.querySelector("body");
+const forBackground = document.querySelector(".forBackground");
+const main = document.querySelector("main");
+const navTop = document.querySelector("nav");
+//====== NAV variables ======//
 const logo = document.querySelector(".logo");
 const welcome = document.querySelector(".welcome");
+const login = document.querySelector(".login");
 const loginUser = document.querySelector(".login__input--user");
 const loginPin = document.querySelector(".login__input--pin");
 const loginButton = document.querySelector(".login__btn");
@@ -64,6 +68,7 @@ const balanceValueCurrency = document.querySelector(".balance_value_currency");
 ////////////////////////////////////////
 
 //======Movements Variables======//
+const movements = document.querySelector(".movements");
 const movementDeposit = document.querySelector(".movements__type--deposit");
 const movementWithdraw = document.querySelector(".movements__type--withdraw");
 const movementValue = document.querySelector(".movements_value_number");
@@ -94,3 +99,30 @@ const summaryInterest = document.querySelector(".summary__value--interest");
 ////////////////////////////////////////
 
 ///////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+
+loginButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  logo.style.height = "14.25rem";
+  welcome.style.alignSelf = "center";
+  login.style.alignSelf = "center";
+  forBackground.style.filter = "opacity(0.2)";
+  main.classList.remove("hidden");
+  navTop.style.padding = "0 5rem";
+
+  account1.movements.forEach((movement, i) => {
+    let type;
+    type = movement > 0 ? `deposit` : `withdraw`;
+    movements.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="movements__row">
+              <div class="movements__type movements__type--${type}">
+                ${i} ${type}
+              </div>
+              <div class="movements__value">
+                <span class="movements_value_number">${movement}</span>
+                <span class="movements_value_currency"> € </span>
+              </div>
+            </div>`
+    );
+  });
+});
