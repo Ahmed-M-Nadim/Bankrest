@@ -19,6 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #444;
   background-color: #b6b6b6;
+  background-image: linear-gradient(#b6b6b6, black);
   height: 100vh;
   position: relative;
 }
@@ -79,6 +80,7 @@ nav {
   color: inherit;
   border: 1px solid #fff;
   transition: all 0.3s;
+  box-shadow: 2px 2px 2px #0000001f;
 }
 
 .login__input:focus {
@@ -152,6 +154,7 @@ nav {
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
+  box-shadow: 2px 2px 2px #0000001f;
 }
 
 .movements__row {
@@ -182,7 +185,7 @@ nav {
   background-image: linear-gradient(to top left, #0f4780, #4b7daf);
 }
 
-.movements__type--withdrawal {
+.movements__type--withdraw {
   background-image: linear-gradient(to top left, #5e768d, #afafaf);
 }
 
@@ -205,6 +208,7 @@ nav {
   font-weight: 500;
   text-transform: uppercase;
   margin-right: 0.8rem;
+  color: white;
 }
 
 .summary__value {
@@ -214,11 +218,11 @@ nav {
 
 .summary__value--in,
 .summary__value--interest {
-  color: #0d355e;
+  color: #0d64bb;
 }
 
 .summary__value--out {
-  color: #527394;
+  color: #9ebbda;
 }
 
 .btn--sort {
@@ -239,14 +243,17 @@ nav {
 
 .operation--transfer {
   background-image: linear-gradient(to top left, #d4ffea, #7397de);
+  box-shadow: 2px 2px 2px #0000001f;
 }
 
 .operation--loan {
   background-image: linear-gradient(to top left, #0f4780, #70a1d1);
+  box-shadow: 2px 2px 2px #0000001f;
 }
 
 .operation--close {
   background-image: linear-gradient(to top left, #afafaf, #5e768d);
+  box-shadow: 2px 2px 2px #0000001f;
 }
 
 h2 {

@@ -45,3 +45,52 @@ const account4 = {
 };
 
 const accounts = [account1, account2, account3, account4];
+
+//////////////////////////////////////// //////////////////////////////////////// /////////////////////////////////////////
+////////////////////////////////////////CREATE VARIABLE////////////////////////////////////////
+
+//====== NAV variables ======//
+const body = document.querySelector("body");
+const logo = document.querySelector(".logo");
+const welcome = document.querySelector(".welcome");
+const loginUser = document.querySelector(".login__input--user");
+const loginPin = document.querySelector(".login__input--pin");
+const loginButton = document.querySelector(".login__btn");
+////////////////////////////////////////
+
+//======Current Balance Variables======//
+const balanceValueNumber = document.querySelector(".balance_value_number");
+const balanceValueCurrency = document.querySelector(".balance_value_currency");
+////////////////////////////////////////
+
+//======Movements Variables======//
+const movementDeposit = document.querySelector(".movements__type--deposit");
+const movementWithdraw = document.querySelector(".movements__type--withdraw");
+const movementValue = document.querySelector(".movements_value_number");
+const movementCurrency = document.querySelector(".movements_value_currency");
+////////////////////////////////////////
+
+//======Transfer Money Variables======//
+const transferToUser = document.querySelector(".form__input--to");
+const transferToAmount = document.querySelector(".form__input--amount");
+const transferToButton = document.querySelector(".form__btn--transfer");
+////////////////////////////////////////
+
+//======Request Loan Variables======//
+const loanAmount = document.querySelector(".form__input--loan-amount");
+const loanButton = document.querySelector(".form__btn--loan");
+////////////////////////////////////////
+
+//======Close Account Variables======//
+const confirmUser = document.querySelector(".form__input--user");
+const confirmPIN = document.querySelector(".form__input--pin");
+const confirmButton = document.querySelector(".form__btn--close");
+////////////////////////////////////////
+
+//======Summary Variables======//
+const summaryIn = document.querySelector(".summary__value--in");
+const summaryOut = document.querySelector(".summary__value--out");
+const summaryInterest = document.querySelector(".summary__value--interest");
+////////////////////////////////////////
+
+///////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
