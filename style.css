@@ -19,7 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #444;
   /* background-color: #b6b6b6; */
-  background-image: linear-gradient(#ffffff, black);
+  background-image: linear-gradient(#ffffff00, rgb(0, 0, 0));
   height: 100vh;
   position: relative;
 }
@@ -52,7 +52,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5rem 5rem;
+  padding: 5rem 5rem 5rem 5rem;
 }
 
 .welcome {
@@ -117,7 +117,7 @@ nav {
 .app {
   position: relative;
   max-width: 100rem;
-  margin: 0.8rem auto;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 4fr 3fr;
   grid-template-rows: auto repeat(3, 15rem) auto;
@@ -137,7 +137,7 @@ nav {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .balance__label {

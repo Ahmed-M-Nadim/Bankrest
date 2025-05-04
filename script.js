@@ -99,15 +99,20 @@ const summaryInterest = document.querySelector(".summary__value--interest");
 ////////////////////////////////////////
 
 ///////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//====== CURRENT USER======//
+
+//////////////////////////////////////// ///////////////////////////////////////// ////////////////////////////////////////
+//======LOGIN EVENT======//
 
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
-  logo.style.height = "14.25rem";
+  logo.style.height = "16.25rem";
   welcome.style.alignSelf = "center";
   login.style.alignSelf = "center";
   forBackground.style.filter = "opacity(0.2)";
   main.classList.remove("hidden");
   navTop.style.padding = "0 5rem";
+  welcome.textContent = `Welcome, ${account1.owner}`;
 
   account1.movements.forEach((movement, i) => {
     let type;
@@ -116,7 +121,7 @@ loginButton.addEventListener("click", (e) => {
       "afterbegin",
       `<div class="movements__row">
               <div class="movements__type movements__type--${type}">
-                ${i} ${type}
+                ${i + 1} ${type}
               </div>
               <div class="movements__value">
                 <span class="movements_value_number">${movement}</span>
@@ -126,3 +131,25 @@ loginButton.addEventListener("click", (e) => {
     );
   });
 });
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======CURRENT BALANCE======//
+
+account1.movements.reduce((acc, curr) => {
+  return (balanceValueNumber.textContent = acc + curr);
+});
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//====== Total Deposit & Withdraw======//
+
+let totalDeposit = 0;
+let totalWithdraw = 0;
+account1.movements.forEach(function (movement) {
+  if (movement > 0) {
+    return (totalDeposit += movement);
+  } else if (movement < 0) {
+    return (totalWithdraw += movement);
+  }
+});
+summaryIn.textContent = totalDeposit;
+summaryOut.textContent = totalWithdraw;
+console.log(totalDeposit);
+console.log(totalWithdraw);
