@@ -18,8 +18,8 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   color: #444;
-  background-color: #b6b6b6;
-  background-image: linear-gradient(#b6b6b6, black);
+  /* background-color: #b6b6b6; */
+  background-image: linear-gradient(#ffffff, black);
   height: 100vh;
   position: relative;
 }
@@ -81,14 +81,15 @@ nav {
   border-radius: 10rem;
   margin-right: 1rem;
   color: inherit;
-  border: 1px solid #fff;
+  border: 1px solid #00000e;
   transition: all 0.3s;
-  box-shadow: 2px 2px 2px #0000001f;
+  box-shadow: 2px 2px 2px #00000050;
 }
 
 .login__input:focus {
   outline: none;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
+  box-shadow: 2px 2px 2px #000000a1;
 }
 
 .login__input::placeholder {
@@ -161,14 +162,14 @@ nav {
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
-  box-shadow: 2px 2px 2px #0000001f;
+  box-shadow: 2px 2px 2px #00000050;
 }
 
 .movements__row {
   padding: 2.25rem 4rem;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #c7c7c7;
 }
 
 .movements__type {
@@ -250,17 +251,17 @@ nav {
 
 .operation--transfer {
   background-image: linear-gradient(to top left, #d4ffea, #7397de);
-  box-shadow: 2px 2px 2px #0000001f;
+  box-shadow: 2px 2px 2px #00000050;
 }
 
 .operation--loan {
   background-image: linear-gradient(to top left, #0f4780, #70a1d1);
-  box-shadow: 2px 2px 2px #0000001f;
+  box-shadow: 2px 2px 2px #00000050;
 }
 
 .operation--close {
   background-image: linear-gradient(to top left, #afafaf, #5e768d);
-  box-shadow: 2px 2px 2px #0000001f;
+  box-shadow: 2px 2px 2px #00000050;
 }
 
 h2 {
