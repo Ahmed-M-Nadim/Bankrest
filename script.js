@@ -46,6 +46,20 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
+//======UserNames======//
+
+accounts.forEach((account) => {
+  account.username = account.owner
+    .split(" ")
+    .map((name) => name[0])
+    .join("")
+    .toLowerCase();
+});
+
+let usernames = [];
+accounts.forEach((account) => {
+  usernames.push(account.username);
+});
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////CREATE VARIABLE////////////////////////////////////////
 
@@ -68,7 +82,7 @@ const balanceValueCurrency = document.querySelector(".balance_value_currency");
 ////////////////////////////////////////
 
 //======Movements Variables======//
-const movements = document.querySelector(".movements");
+const movementsAll = document.querySelector(".movements");
 const movementDeposit = document.querySelector(".movements__type--deposit");
 const movementWithdraw = document.querySelector(".movements__type--withdraw");
 const movementValue = document.querySelector(".movements_value_number");
@@ -98,8 +112,6 @@ const summaryOut = document.querySelector(".summary__value--out");
 const summaryInterest = document.querySelector(".summary__value--interest");
 ////////////////////////////////////////
 
-//======UserNames======//
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////CREATE EVENTS//////////////////////////////////////// //////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -108,8 +120,11 @@ const summaryInterest = document.querySelector(".summary__value--interest");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //======LOGIN EVENT======//
 
+let currentUser;
+
 loginButton.addEventListener("click", (e) => {
   e.preventDefault();
+
   logo.style.height = "16.25rem";
   welcome.style.alignSelf = "center";
   login.style.alignSelf = "center";
@@ -122,15 +137,15 @@ loginButton.addEventListener("click", (e) => {
     account.movements.forEach((movement, i) => {
       let type;
       type = movement > 0 ? `deposit` : `withdraw`;
-      movements.insertAdjacentHTML(
+      movementsAll.insertAdjacentHTML(
         "afterbegin",
         `<div class="movements__row">
               <div class="movements__type movements__type--${type}">
                 ${i + 1} ${type}
               </div>
               <div class="movements__value">
-                <span class="movements_value_number">${movement}</span>
-                <span class="movements_value_currency"> € </span>
+                
+                <span class="movements_value_currency"> <span class="movements_value_number">${movement}</span>€ </span>
               </div>
             </div>`
       );
@@ -167,7 +182,5 @@ const displayTotalDepositWithdrawInterest = function (account) {
 };
 displayTotalDepositWithdrawInterest(account1);
 
-console.log(totalDeposit);
-console.log(totalWithdraw);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
