@@ -18,8 +18,12 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   color: #444;
-  /* background-color: #b6b6b6; */
-  background-image: linear-gradient(#32667a50, rgb(0, 0, 0));
+  background-color: #ffffff;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.096),
+    #a3c6d31f,
+    rgb(0, 0, 0)
+  );
   height: 100vh;
   position: relative;
 }
@@ -165,7 +169,7 @@ nav {
   background-color: #fff;
   border-radius: 1rem;
   overflow: scroll;
-  box-shadow: 2px 2px 2px #00000050;
+  box-shadow: 2px -1px 10px #0000001c;
 }
 
 .movements__row {
