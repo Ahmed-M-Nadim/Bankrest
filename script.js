@@ -188,6 +188,22 @@ const TransferMoney = function (account) {
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //======Close Current Account======//
+// confirmButton.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   if (
+//     confirmUser.value === currentUser.username &&
+//     Number(confirmPIN.value) === currentUser.pin
+//   ) {
+//     const currentUserIndex = accounts.findIndex(currentUser);
+//     accounts.splice(currentUserIndex, 1);
+//     main.classList.add("hidden");
+//     logo.style.height = "34.25rem";
+//     forBackground.style.filter = "opacity(1)";
+//     welcome.textContent = "Log in to get started";
+//   }
+// });
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -242,4 +258,29 @@ transferToButton.addEventListener("click", (e) => {
   displayCurrentBalance(currentUser);
   displayTotalDepositWithdrawInterest(currentUser);
 });
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+/======Close Current Account======/ /
+  confirmButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (
+      confirmUser.value === currentUser.username &&
+      Number(confirmPIN.value) === currentUser.pin
+    ) {
+      const currentUserIndex = accounts.findIndex(
+        (account) => account.username === currentUser.username
+      );
+      accounts.splice(currentUserIndex, 1);
+      main.classList.add("hidden");
+      logo.style.height = "34.25rem";
+      forBackground.style.filter = "opacity(1)";
+      welcome.textContent = "Log in to get started";
+      welcome.style.alignSelf = "flex-start";
+      welcome.style.paddingTop = "6rem";
+      login.style.alignSelf = "flex-start";
+      login.style.paddingTop = "6rem";
+      displayMovements(currentUser);
+      displayCurrentBalance(currentUser);
+      displayTotalDepositWithdrawInterest(currentUser);
+    }
+  });
 //////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
