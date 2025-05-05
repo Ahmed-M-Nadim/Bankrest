@@ -176,10 +176,13 @@ const TransferMoney = function (account) {
       Number(transferToAmount.value) > 0 &&
       Number(balanceValueNumber.textContent) >=
         Number(transferToAmount.value) &&
-      transferToUser.value !== currentUser
+      transferToUser.value !== currentUser &&
+      transferToUser.value
     ) {
       transferTo.movements.push(Number(transferToAmount.value));
       currentUser.movements.push(-Number(transferToAmount.value));
+      transferToUser.value = "";
+      transferToAmount.value = "";
     }
   }
 };
