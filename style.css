@@ -19,7 +19,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: #444;
   /* background-color: #b6b6b6; */
-  background-image: linear-gradient(#176a8b50, rgb(0, 0, 0));
+  background-image: linear-gradient(#32667a50, rgb(0, 0, 0));
   height: 100vh;
   position: relative;
 }
