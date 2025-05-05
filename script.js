@@ -115,45 +115,28 @@ const summaryInterest = document.querySelector(".summary__value--interest");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////CREATE EVENTS//////////////////////////////////////// //////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//====== CURRENT USER======//
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//======LOGIN EVENT======//
+//====== Display Current User Movements ======//
 
-let currentUser;
-
-loginButton.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  logo.style.height = "16.25rem";
-  welcome.style.alignSelf = "center";
-  login.style.alignSelf = "center";
-  forBackground.style.filter = "opacity(0.2)";
-  main.classList.remove("hidden");
-  navTop.style.padding = "0 5rem";
-  welcome.textContent = `Welcome, ${account1.owner}`;
-
-  const displayMovements = function (account) {
-    account.movements.forEach((movement, i) => {
-      let type;
-      type = movement > 0 ? `deposit` : `withdraw`;
-      movementsAll.insertAdjacentHTML(
-        "afterbegin",
-        `<div class="movements__row">
-              <div class="movements__type movements__type--${type}">
-                ${i + 1} ${type}
-              </div>
-              <div class="movements__value">
-                
-                <span class="movements_value_currency"> <span class="movements_value_number">${movement}</span>€ </span>
-              </div>
-            </div>`
-      );
-    });
-  };
-  displayMovements(account1);
-});
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const displayMovements = function (account) {
+  account.movements.forEach((movement, i) => {
+    let type;
+    type = movement > 0 ? `deposit` : `withdraw`;
+    movementsAll.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="movements__row">
+            <div class="movements__type movements__type--${type}">
+              ${i + 1} ${type}
+            </div>
+            <div class="movements__value">
+              
+              <span class="movements_value_currency"> <span class="movements_value_number">${movement}</span>€ </span>
+            </div>
+          </div>`
+    );
+  });
+};
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
 //======CURRENT BALANCE======//
 
 const displayCurrentBalance = function (account) {
@@ -161,7 +144,6 @@ const displayCurrentBalance = function (account) {
     return (balanceValueNumber.textContent = acc + curr);
   });
 };
-displayCurrentBalance(account1);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //====== Total Deposit & Withdraw======//
 
@@ -176,11 +158,53 @@ const displayTotalDepositWithdrawInterest = function (account) {
     }
   });
   summaryIn.textContent = totalDeposit;
-  summaryOut.textContent = totalWithdraw;
+  summaryOut.textContent = Math.abs(totalWithdraw);
+  //////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
   //======Interest======//
   summaryInterest.textContent = (totalDeposit * account1.interestRate) / 100;
 };
-displayTotalDepositWithdrawInterest(account1);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//======LOGIN EVENT======//
+
+let currentUser;
+
+loginButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  //======Create Current User======//
+
+  currentUser = accounts.find(
+    (account) => account.username === loginUser.value
+  );
+
+  //====== If Statement to log current user with his pin ======//
+
+  if (
+    loginUser.value === currentUser.username &&
+    Number(loginPin.value) === currentUser.pin
+  ) {
+    //====== Change Background, navbar, logo size, and the app appearance ======//
+
+    logo.style.height = "16.25rem";
+    welcome.style.alignSelf = "center";
+    login.style.alignSelf = "center";
+    forBackground.style.filter = "opacity(0.2)";
+    main.classList.remove("hidden");
+    navTop.style.padding = "0 5rem";
+    welcome.textContent = `Welcome, ${currentUser.owner}`;
+    movementsAll.textContent = "";
+
+    //======Display current user movements======//
+    displayMovements(currentUser);
+    //======Display current user Balance======//
+    displayCurrentBalance(currentUser);
+    //======Display Total Deposit, Withdraw, and interest======//
+    displayTotalDepositWithdrawInterest(currentUser);
+  }
+});
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
