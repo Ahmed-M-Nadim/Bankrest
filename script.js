@@ -196,6 +196,8 @@ loginButton.addEventListener("click", (e) => {
     main.classList.remove("hidden");
     navTop.style.padding = "0 5rem";
     welcome.textContent = `Welcome, ${currentUser.owner.split(" ")[0]}`;
+    loginUser.value = "";
+    loginPin.value = "";
     movementsAll.textContent = "";
 
     //======Display current user movements======//
