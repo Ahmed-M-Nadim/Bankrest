@@ -161,7 +161,20 @@ const displayTotalDepositWithdrawInterest = function (account) {
   summaryOut.textContent = Math.abs(totalWithdraw);
   //////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
   //======Interest======//
-  summaryInterest.textContent = (totalDeposit * account1.interestRate) / 100;
+  summaryInterest.textContent = (totalDeposit * currentUser.interestRate) / 100;
+};
+
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======Transfer Money======//
+const TransferMoney = function (account) {
+  let transferTo = accounts.find(
+    (account) => account.username === transferToUser.value
+  );
+
+  if (transferTo.username === transferToUser.value) {
+    transferTo.movements.push(Number(transferToAmount.value));
+    currentUser.movements.push(-Number(transferToAmount.value));
+  }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -210,3 +223,12 @@ loginButton.addEventListener("click", (e) => {
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//======Transfer Event======//
+transferToButton.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  TransferMoney(transferToUser.value);
+  displayMovements(currentUser);
+  displayCurrentBalance(currentUser);
+  displayTotalDepositWithdrawInterest(currentUser);
+});
