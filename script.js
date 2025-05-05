@@ -172,8 +172,15 @@ const TransferMoney = function (account) {
   );
 
   if (transferTo.username === transferToUser.value) {
-    transferTo.movements.push(Number(transferToAmount.value));
-    currentUser.movements.push(-Number(transferToAmount.value));
+    if (
+      Number(transferToAmount.value) > 0 &&
+      Number(balanceValueNumber.textContent) >=
+        Number(transferToAmount.value) &&
+      transferToUser.value !== currentUser
+    ) {
+      transferTo.movements.push(Number(transferToAmount.value));
+      currentUser.movements.push(-Number(transferToAmount.value));
+    }
   }
 };
 
