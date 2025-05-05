@@ -195,7 +195,7 @@ loginButton.addEventListener("click", (e) => {
     forBackground.style.filter = "opacity(0.2)";
     main.classList.remove("hidden");
     navTop.style.padding = "0 5rem";
-    welcome.textContent = `Welcome, ${currentUser.owner}`;
+    welcome.textContent = `Welcome, ${currentUser.owner.split(" ")[0]}`;
     movementsAll.textContent = "";
 
     //======Display current user movements======//
