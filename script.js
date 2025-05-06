@@ -110,6 +110,8 @@ const confirmButton = document.querySelector(".form__btn--close");
 const summaryIn = document.querySelector(".summary__value--in");
 const summaryOut = document.querySelector(".summary__value--out");
 const summaryInterest = document.querySelector(".summary__value--interest");
+const sortDown = document.querySelector(".btn--sort--down");
+const sortUp = document.querySelector(".btn--sort--up");
 ////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -176,15 +178,34 @@ const TransferMoney = function (account) {
       Number(transferToAmount.value) > 0 &&
       Number(balanceValueNumber.textContent) >=
         Number(transferToAmount.value) &&
-      transferToUser.value !== currentUser
+      transferToUser.value !== currentUser &&
+      transferToUser.value
     ) {
       transferTo.movements.push(Number(transferToAmount.value));
       currentUser.movements.push(-Number(transferToAmount.value));
+      transferToUser.value = "";
+      transferToAmount.value = "";
     }
   }
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// //======Close Current Account======//
+// confirmButton.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   if (
+//     confirmUser.value === currentUser.username &&
+//     Number(confirmPIN.value) === currentUser.pin
+//   ) {
+//     const currentUserIndex = accounts.findIndex(currentUser);
+//     accounts.splice(currentUserIndex, 1);
+//     main.classList.add("hidden");
+//     logo.style.height = "34.25rem";
+//     forBackground.style.filter = "opacity(1)";
+//     welcome.textContent = "Log in to get started";
+//   }
+// });
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -240,3 +261,63 @@ transferToButton.addEventListener("click", (e) => {
   displayTotalDepositWithdrawInterest(currentUser);
 });
 //////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======Close Current Account======//
+confirmButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (
+    confirmUser.value === currentUser.username &&
+    Number(confirmPIN.value) === currentUser.pin
+  ) {
+    const currentUserIndex = accounts.findIndex(
+      (account) => account.username === currentUser.username
+    );
+    accounts.splice(currentUserIndex, 1);
+    main.classList.add("hidden");
+    logo.style.height = "34.25rem";
+    forBackground.style.filter = "opacity(1)";
+    welcome.textContent = "Log in to get started";
+    welcome.style.alignSelf = "flex-start";
+    welcome.style.paddingTop = "6rem";
+    login.style.alignSelf = "flex-start";
+    login.style.paddingTop = "6rem";
+    displayMovements(currentUser);
+    displayCurrentBalance(currentUser);
+    displayTotalDepositWithdrawInterest(currentUser);
+  }
+});
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======Loan Request======//
+loanButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (
+    currentUser.movements.some(
+      (movement) => movement >= (10 / 100) * Number(loanAmount.value)
+    )
+  ) {
+    currentUser.movements.push(Number(loanAmount.value));
+    loanAmount.value = "";
+    displayMovements(currentUser);
+    displayCurrentBalance(currentUser);
+    displayTotalDepositWithdrawInterest(currentUser);
+  }
+});
+//////////////////////////////////////// ////////////////////////////////////////////////////////////////////////////////
+//======Sort Descending=======//
+sortDown.addEventListener("click", (e) => {
+  e.preventDefault();
+  currentUser.movements.sort((a, b) => (a > b ? 1 : -1));
+  movementsAll.textContent = "";
+  displayMovements(currentUser);
+  displayCurrentBalance(currentUser);
+  displayTotalDepositWithdrawInterest(currentUser);
+});
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======Sort Ascending======//
+sortUp.addEventListener("click", (e) => {
+  e.preventDefault();
+  currentUser.movements.sort((a, b) => (a > b ? -1 : 1));
+  movementsAll.textContent = "";
+  displayMovements(currentUser);
+  displayCurrentBalance(currentUser);
+  displayTotalDepositWithdrawInterest(currentUser);
+});
