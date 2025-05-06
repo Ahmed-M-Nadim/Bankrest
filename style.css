@@ -69,6 +69,7 @@ nav {
 .logo {
   height: 34.25rem;
   position: relative;
+  text-shadow: 10px 1px 1px rgba(0, 0, 0, 0.137);
 }
 
 .login {
