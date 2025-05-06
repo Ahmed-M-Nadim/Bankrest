@@ -242,7 +242,8 @@ nav {
 }
 
 .btn--sort--up,
-.btn--sort--down {
+.btn--sort--down,
+.btn--sort--return {
   margin-left: auto;
   border: none;
   background: none;
@@ -254,6 +255,10 @@ nav {
 
 .btn--sort--up {
   margin-left: 10px;
+}
+
+.btn--sort--return {
+  margin-left: 5px;
 }
 
 /* OPERATIONS */

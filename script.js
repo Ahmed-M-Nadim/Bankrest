@@ -19,6 +19,7 @@ console.log(myNewDay);
 const account1 = {
   owner: "Ahmed Nadim",
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  movements1: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
 };
@@ -26,6 +27,7 @@ const account1 = {
 const account2 = {
   owner: "Hanem Mohamed",
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  movements1: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
 };
@@ -33,6 +35,7 @@ const account2 = {
 const account3 = {
   owner: "Mahmoud Ahmed Mahmoud",
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  movements1: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
 };
@@ -40,6 +43,7 @@ const account3 = {
 const account4 = {
   owner: "Hassan Hussein",
   movements: [430, 1000, 700, 50, 90],
+  movements1: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
 };
@@ -112,6 +116,7 @@ const summaryOut = document.querySelector(".summary__value--out");
 const summaryInterest = document.querySelector(".summary__value--interest");
 const sortDown = document.querySelector(".btn--sort--down");
 const sortUp = document.querySelector(".btn--sort--up");
+const returnSort = document.querySelector(".btn--sort--return");
 ////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -122,6 +127,24 @@ const sortUp = document.querySelector(".btn--sort--up");
 
 const displayMovements = function (account) {
   account.movements.forEach((movement, i) => {
+    let type;
+    type = movement > 0 ? `deposit` : `withdraw`;
+    movementsAll.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="movements__row">
+            <div class="movements__type movements__type--${type}">
+              ${i + 1} ${type}
+            </div>
+            <div class="movements__value">
+              
+              <span class="movements_value_currency"> <span class="movements_value_number">${movement}</span>€ </span>
+            </div>
+          </div>`
+    );
+  });
+};
+const displayMovementsReturn = function (account) {
+  account.movements1.forEach((movement, i) => {
     let type;
     type = movement > 0 ? `deposit` : `withdraw`;
     movementsAll.insertAdjacentHTML(
@@ -301,7 +324,7 @@ loanButton.addEventListener("click", (e) => {
     displayTotalDepositWithdrawInterest(currentUser);
   }
 });
-//////////////////////////////////////// ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //======Sort Descending=======//
 sortDown.addEventListener("click", (e) => {
   e.preventDefault();
@@ -311,13 +334,22 @@ sortDown.addEventListener("click", (e) => {
   displayCurrentBalance(currentUser);
   displayTotalDepositWithdrawInterest(currentUser);
 });
-//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //======Sort Ascending======//
 sortUp.addEventListener("click", (e) => {
   e.preventDefault();
   currentUser.movements.sort((a, b) => (a > b ? -1 : 1));
   movementsAll.textContent = "";
   displayMovements(currentUser);
+  displayCurrentBalance(currentUser);
+  displayTotalDepositWithdrawInterest(currentUser);
+});
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//====== Return =======//
+returnSort.addEventListener("click", (e) => {
+  e.preventDefault();
+  movementsAll.textContent = "";
+  displayMovementsReturn(currentUser);
   displayCurrentBalance(currentUser);
   displayTotalDepositWithdrawInterest(currentUser);
 });
