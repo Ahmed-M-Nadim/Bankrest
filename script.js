@@ -110,6 +110,8 @@ const confirmButton = document.querySelector(".form__btn--close");
 const summaryIn = document.querySelector(".summary__value--in");
 const summaryOut = document.querySelector(".summary__value--out");
 const summaryInterest = document.querySelector(".summary__value--interest");
+const sortDown = document.querySelector(".btn--sort--down");
+const sortUp = document.querySelector(".btn--sort--up");
 ////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -298,4 +300,24 @@ loanButton.addEventListener("click", (e) => {
     displayCurrentBalance(currentUser);
     displayTotalDepositWithdrawInterest(currentUser);
   }
+});
+//////////////////////////////////////// ////////////////////////////////////////////////////////////////////////////////
+//======Sort Descending=======//
+sortDown.addEventListener("click", (e) => {
+  e.preventDefault();
+  currentUser.movements.sort((a, b) => (a > b ? 1 : -1));
+  movementsAll.textContent = "";
+  displayMovements(currentUser);
+  displayCurrentBalance(currentUser);
+  displayTotalDepositWithdrawInterest(currentUser);
+});
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======Sort Ascending======//
+sortUp.addEventListener("click", (e) => {
+  e.preventDefault();
+  currentUser.movements.sort((a, b) => (a > b ? -1 : 1));
+  movementsAll.textContent = "";
+  displayMovements(currentUser);
+  displayCurrentBalance(currentUser);
+  displayTotalDepositWithdrawInterest(currentUser);
 });

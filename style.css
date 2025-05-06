@@ -241,13 +241,19 @@ nav {
   color: #9ebbda;
 }
 
-.btn--sort {
+.btn--sort--up,
+.btn--sort--down {
   margin-left: auto;
   border: none;
   background: none;
   font-size: 1.3rem;
   font-weight: 500;
   cursor: pointer;
+  color: white;
+}
+
+.btn--sort--up {
+  margin-left: 10px;
 }
 
 /* OPERATIONS */
@@ -341,4 +347,17 @@ h2 {
 
 .timer {
   font-weight: 600;
+}
+
+footer {
+  color: white;
+  z-index: 3;
+  position: relative;
+  font-size: 10px;
+  bottom: -400px;
+  left: -800px;
+}
+
+footer img {
+  width: 180px;
 }
