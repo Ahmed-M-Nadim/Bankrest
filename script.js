@@ -83,6 +83,7 @@ const loginButton = document.querySelector(".login__btn");
 //======Current Balance Variables======//
 const balanceValueNumber = document.querySelector(".balance_value_number");
 const balanceValueCurrency = document.querySelector(".balance_value_currency");
+const date = document.querySelector(".date");
 ////////////////////////////////////////
 
 //======Movements Variables======//
@@ -353,3 +354,13 @@ returnSort.addEventListener("click", (e) => {
   displayCurrentBalance(currentUser);
   displayTotalDepositWithdrawInterest(currentUser);
 });
+//////////////////////////////////////// //////////////////////////////////////// ////////////////////////////////////////
+//======Main Date======//
+const mainDate = new Date();
+const today = `${mainDate.getDate()}`.padStart(2, 0);
+const theMonth = `${mainDate.getMonth() + 1}`.padStart(2, 0);
+const theYear = mainDate.getFullYear();
+const theHour = `${mainDate.getHours()}`.padStart(2, 0);
+const theMinute = `${mainDate.getMinutes()}`.padStart(2, 0);
+
+date.textContent = `${today}/${theMonth}/${theYear}, ${theHour}:${theMinute}`;
