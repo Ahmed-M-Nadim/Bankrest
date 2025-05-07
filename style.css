@@ -75,6 +75,8 @@ nav {
 .login {
   display: flex;
   align-self: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
 .login__input {
@@ -365,4 +367,9 @@ footer {
 
 footer img {
   width: 180px;
+}
+
+.login-img {
+  width: 30px;
+  padding-top: 10px;
 }
