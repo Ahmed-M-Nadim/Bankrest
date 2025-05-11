@@ -177,17 +177,24 @@ const returnSort = document.querySelector(".btn--sort--return");
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //====== Display Current User Movements ======//
-
 const displayMovements = function (account) {
   account.movements.forEach((movement, i) => {
     let type;
     type = movement > 0 ? `deposit` : `withdraw`;
+    let displayDate = new Date(account.movementsDates[i]);
+    const today = `${displayDate.getDate()}`.padStart(2, 0);
+    const theMonth = `${displayDate.getMonth() + 1}`.padStart(2, 0);
+    const theYear = displayDate.getFullYear();
+    const theHour = `${displayDate.getHours()}`.padStart(2, 0);
+    const theMinute = `${displayDate.getMinutes()}`.padStart(2, 0);
+
     movementsAll.insertAdjacentHTML(
       "afterbegin",
       `<div class="movements__row">
             <div class="movements__type movements__type--${type}">
               ${i + 1} ${type}
             </div>
+            <div class="movements__date">${today}/${theMonth}/${theYear}, ${theHour}:${theMinute}</div>
             <div class="movements__value">
               
               <span class="movements_value_currency"> <span class="movements_value_number">${movement}</span>€ </span>
@@ -200,12 +207,19 @@ const displayMovementsReturn = function (account) {
   account.movements1.forEach((movement, i) => {
     let type;
     type = movement > 0 ? `deposit` : `withdraw`;
+    let displayDate = new Date(account.movementsDates[i]);
+    const today = `${displayDate.getDate()}`.padStart(2, 0);
+    const theMonth = `${displayDate.getMonth() + 1}`.padStart(2, 0);
+    const theYear = displayDate.getFullYear();
+    const theHour = `${displayDate.getHours()}`.padStart(2, 0);
+    const theMinute = `${displayDate.getMinutes()}`.padStart(2, 0);
     movementsAll.insertAdjacentHTML(
       "afterbegin",
       `<div class="movements__row">
             <div class="movements__type movements__type--${type}">
               ${i + 1} ${type}
             </div>
+            <div class="movements__date">${today}/${theMonth}/${theYear}, ${theHour}:${theMinute}</div>
             <div class="movements__value">
               
               <span class="movements_value_currency"> <span class="movements_value_number">${movement}</span>€ </span>
