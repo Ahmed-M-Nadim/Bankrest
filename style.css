@@ -373,3 +373,31 @@ footer img {
   width: 30px;
   padding-top: 10px;
 }
+
+@media only screen and (max-width: 1600px) {
+  .logo {
+    height: 26.25rem;
+  }
+  .login__input {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    width: 8rem;
+  }
+}
+@media only screen and (max-width: 1300px) {
+  .logo {
+    height: 20.25rem;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .logo {
+    height: 16.25rem;
+  }
+  .login__input {
+    padding: 0.4rem 1.2rem;
+    font-size: 1.2rem;
+    font-family: inherit;
+    width: 6rem;
+  }
+}
