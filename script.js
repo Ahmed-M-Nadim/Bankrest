@@ -272,7 +272,9 @@ const TransferMoney = function (account) {
       transferToUser.value
     ) {
       transferTo.movements.push(Number(transferToAmount.value));
+      transferTo.movementsDates.push(mainDate);
       currentUser.movements.push(-Number(transferToAmount.value));
+      currentUser.movementsDates.push(mainDate);
       transferToUser.value = "";
       transferToAmount.value = "";
     }
@@ -386,6 +388,7 @@ loanButton.addEventListener("click", (e) => {
   ) {
     currentUser.movements.push(Number(loanAmount.value));
     loanAmount.value = "";
+    currentUser.movementsDates.push(mainDate);
     displayMovements(currentUser);
     displayCurrentBalance(currentUser);
     displayTotalDepositWithdrawInterest(currentUser);
